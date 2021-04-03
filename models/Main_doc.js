@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       Main_doc.belongsTo(models.Ordner, {
         foreignKey: 'ordnerId',
       })
+      Main_doc.hasMany(models.Attached_doc)
     }
   }
   Main_doc.init(

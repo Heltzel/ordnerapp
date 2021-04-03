@@ -11,7 +11,7 @@ const getModels = (path) => {
       break
     case 'maindocs':
       parentModel = Main_doc
-      childModel = null
+      childModel = Attached_doc
       break
     case 'attacheddocs':
       parentModel = Attached_doc

@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+'use strict'
+const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Attached_doc extends Model {
     /**
@@ -10,18 +8,21 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Attached_doc.belongsTo(models.Main_doc, { foreignKey: 'maindocId' })
     }
-  };
-  Attached_doc.init({
-    name: DataTypes.STRING,
-    note: DataTypes.TEXT,
-    alert: DataTypes.STRING,
-    maindocId: DataTypes.INTEGER,
-    diskFile: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Attached_doc',
-  });
-  return Attached_doc;
-};
+  }
+  Attached_doc.init(
+    {
+      name: DataTypes.STRING,
+      note: DataTypes.TEXT,
+      alert: DataTypes.STRING,
+      maindocId: DataTypes.INTEGER,
+      diskFile: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: 'Attached_doc',
+    },
+  )
+  return Attached_doc
+}
