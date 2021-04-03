@@ -15,7 +15,7 @@ module.exports = updateService = (req, res, parentModel) => {
         })
       } else {
         return res.json({
-          msg: `Cannot update this parentModel with id=${id}. Maybe this parentModel was not found or req.body is empty!`,
+          msg: `Cannot update this ${parentModel.name} Model with id=${id}. Maybe this ${parentModel.name} Model was not found or req.body is empty!`,
         })
       }
     })

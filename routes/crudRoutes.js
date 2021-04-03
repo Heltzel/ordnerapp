@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 // importing the models just for the name is a bit of overkill
-const routenames = ['ordners', 'maindocs']
+const routenames = ['ordners', 'maindocs', 'attacheddocs']
 const { crudController } = require('../controllers')
 
 routenames.forEach((routename) => {

@@ -1,5 +1,5 @@
 // as far as I have been able to find out: the models will loaded only once
-const { Ordner, Main_doc } = require('../../models')
+const { Ordner, Main_doc, Attached_doc } = require('../../models')
 
 const getModels = (path) => {
   const key = path.split('/')[1]
@@ -11,6 +11,10 @@ const getModels = (path) => {
       break
     case 'maindocs':
       parentModel = Main_doc
+      childModel = null
+      break
+    case 'attacheddocs':
+      parentModel = Attached_doc
       childModel = null
     default:
       break
