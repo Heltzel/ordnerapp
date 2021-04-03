@@ -1,10 +1,23 @@
-const { Main_doc, Attached_doc } = require('../../models')
-module.exports = indexService = (req, res, parentModel, childModel) => {
-  console.log('*********', childModel)
+module.exports = indexService = (
+  req,
+  res,
+  parentModel,
+  childModel,
+  grandchildModel,
+) => {
   parentModel
     .findAll(
       childModel !== null
-        ? { include: { model: childModel, include: { model: Attached_doc } } }
+        ? {
+            include: {
+              model: childModel,
+              include: grandchildModel
+                ? {
+                    model: grandchildModel,
+                  }
+                : [],
+            },
+          }
         : { include: [] },
     )
     .then((data) => {
@@ -17,9 +30,3 @@ module.exports = indexService = (req, res, parentModel, childModel) => {
       return res.status(500).json({ msg: 'requested data not found', err })
     })
 }
-// include: [
-//   {
-//     association: Product.User,
-//     include: [User.Addresses],
-//   },
-// ]

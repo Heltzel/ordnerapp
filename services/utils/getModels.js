@@ -8,19 +8,22 @@ const getModels = (path) => {
     case 'ordners':
       parentModel = Ordner
       childModel = Main_doc
+      grandchildModel = Attached_doc
       break
     case 'maindocs':
       parentModel = Main_doc
       childModel = Attached_doc
+      grandchildModel = null
       break
     case 'attacheddocs':
       parentModel = Attached_doc
       childModel = null
+      grandchildModel = null
     default:
       break
   }
 
-  return { parentModel, childModel }
+  return { parentModel, childModel, grandchildModel }
 }
 
 module.exports = getModels

@@ -9,13 +9,13 @@ const {
 } = require('../services/crudServices')
 
 const index = (req, res) => {
-  const { parentModel, childModel } = getModels(req.path)
-  indexService(req, res, parentModel, childModel)
+  const { parentModel, childModel, grandchildModel } = getModels(req.path)
+  indexService(req, res, parentModel, childModel, grandchildModel)
 }
 
 const show = (req, res) => {
-  const { parentModel, childModel } = getModels(req.path)
-  showService(req, res, parentModel, childModel)
+  const { parentModel, childModel, grandchildModel } = getModels(req.path)
+  showService(req, res, parentModel, childModel, grandchildModel)
 }
 
 const create = (req, res) => {
