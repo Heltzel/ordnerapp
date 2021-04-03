@@ -1,3 +1,5 @@
+
+
 I got the same error in the past when I seeded my database with entries using Date.now(), which returns a number timestamp, for the fields createdAt and updatedAt:
 
 To fix that, change it to new Date() which is going to return a date string.
