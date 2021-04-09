@@ -3,7 +3,7 @@ import { Card, Table } from 'react-bootstrap'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CreateNewButton from '../components/buttons/CreateNewButton'
-import CardHeader from '../components/buttons/CardHeader'
+import CardHeader from '../components/card/CardHeader'
 
 function Home() {
   const URL = 'http://localhost:5000/'
@@ -15,7 +15,7 @@ function Home() {
       .catch((err) => console.log(err))
   }, [])
   return (
-    <Card className="mt-4 ">
+    <Card className="mt-4" style={{ height: '80vh' }}>
       <Card.Body>
         <CardHeader title={'Home'} subtitle={'Alle Ordners'} />
 

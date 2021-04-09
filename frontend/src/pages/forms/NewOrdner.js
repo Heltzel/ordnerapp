@@ -1,12 +1,13 @@
 import React from 'react'
 import { Card, Form } from 'react-bootstrap'
-import CardHeader from '../../components/buttons/CardHeader'
 import CreateNewButton from '../../components/buttons/CreateNewButton'
 import GoBackButton from '../../components/buttons/GoBackButton'
+import HomeButton from '../../components/buttons/HomeButton'
+import CardHeader from '../../components/card/CardHeader'
 
 function NewOrdner() {
   return (
-    <Card className="mt-4">
+    <Card className="mt-4" style={{ height: '80vh' }}>
       <Card.Body>
         <CardHeader
           title={'Nieuwe Ordner'}
@@ -22,14 +23,17 @@ function NewOrdner() {
             <Form.Label className="pl-2">Sub Titel</Form.Label>
             <Form.Control type="text" value="Alle documenten betreffende..." />
           </Form.Group>
-          <div className="action-group mt-4">
-            <GoBackButton />
+          <div className="action-group d-flex justify-content-between mt-4">
+            <span>
+              <GoBackButton />
 
-            <CreateNewButton
-              route={''}
-              title={'Ordner Toevoegen'}
-              type={'submit'}
-            />
+              <CreateNewButton
+                route={''}
+                title={'Ordner Toevoegen'}
+                type={'submit'}
+              />
+            </span>
+            <HomeButton />
           </div>
         </Form>
       </Card.Body>

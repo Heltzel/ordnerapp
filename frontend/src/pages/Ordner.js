@@ -2,9 +2,10 @@ import axios from 'axios'
 import { Card, Table } from 'react-bootstrap'
 import React, { useEffect, useState } from 'react'
 import GoBackButton from '../components/buttons/GoBackButton'
-import CardHeader from '../components/buttons/CardHeader'
+import CardHeader from '../components/card/CardHeader'
 import CreateNewButton from '../components/buttons/CreateNewButton'
 import { Link, useParams } from 'react-router-dom'
+import HomeButton from '../components/buttons/HomeButton'
 
 function Ordner({ match }) {
   const URL = 'http://localhost:5000/'
@@ -20,7 +21,7 @@ function Ordner({ match }) {
   }, [id])
 
   return (
-    <Card className="mt-4">
+    <Card className="mt-4" style={{ height: '80vh' }}>
       <Card.Body>
         <CardHeader title={`${ordner.name} ordner`} subtitle={ordner.note} />
         <Table striped bordered hover className="mt-4">
@@ -39,21 +40,24 @@ function Ordner({ match }) {
                       .toLocaleString('nl-NL')
                       .substr(0, 9)}{' '}
                   </td>
-                  <Link to={`/maindocs/${item.id}`}>
-                    <td>{item.name}</td>
-                  </Link>
+                  <td>
+                    <Link to={`/maindocs/${item.id}`}>{item.name}</Link>
+                  </td>
                 </tr>
               )
             })}
           </tbody>
         </Table>
-        <div className="action-group mt-4">
-          <GoBackButton />
-          <CreateNewButton
-            route={'ordners/create'}
-            type={''}
-            title={'Nieuw Document'}
-          />
+        <div className="action-group d-flex justify-content-between mt-4">
+          <span>
+            <GoBackButton />
+            <CreateNewButton
+              route={'/ordners/create'}
+              type={'button'}
+              title={'Nieuw Document'}
+            />
+          </span>
+          <HomeButton />
         </div>
       </Card.Body>
     </Card>
