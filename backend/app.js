@@ -1,7 +1,9 @@
 const express = require('express')
+var cors = require('cors')
 const app = express()
 const PORT = 5000
 app.use(express.json())
+app.use(cors())
 
 // Routing
 const crudRoutes = require('./routes/crudRoutes')

@@ -1,0 +1,176 @@
+MIME-Version: 1.0
+Date: Tue, 23 Mar 2021 11:01:11 +0200
+From: Magento Marketplace <noreply@magento.com>
+Subject: Notification from Magento Marketplace
+Thread-Topic: Notification from Magento Marketplace
+Message-ID: <3f7695423a77f12e0a02c0676f90bbb2@swift.generated>
+To: "heltzel.service@hotmail.com" <heltzel.service@hotmail.com>
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><s=
+tyle type=3D"text/css">body, table, td, p, h1, strong {
+            font-family: "Adobe Clean", Ubuntu, sans-serif !important;
+        }
+        .section {
+            margin-top: 40px !important;
+        }
+        </style><meta name=3D"format-detection" content=3D"telephone=3Dno">=
+<meta name=3D"format-detection" content=3D"date=3Dno"><meta name=3D"format-=
+detection" content=3D"address=3Dno"><meta name=3D"format-detection" content=
+=3D"url=3Dno"><meta name=3D"format-detection" content=3D"email=3Dno"></head=
+><body style=3D"font-size:16px; font-family:'Adobe Clean', Ubuntu, sans-ser=
+if; color: #4B4B4B; margin: 0; padding: 0 !important; mso-line-height-rule:=
+ exactly;"><div style=3D"font-size: 0.9em;"><table class=3D"pad_null" cells=
+pacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%"><tbody><tr><td><=
+img src=3D"https://mp-static.magento.com/admin/emails/images/blank_email.gi=
+f" alt=3D"" width=3D"1" height=3D"10" border=3D"0" style=3D"display:block">=
+ </td></tr><tr><td align=3D"center" valign=3D"top" style=3D"padding:0"><tab=
+le class=3D"pad_null" bgcolor=3D"FAFBFA" cellspacing=3D"0" cellpadding=3D"0=
+" border=3D"0" width=3D"650" style=3D"border:1px solid #E0E0E0; border-top:=
+ 4px solid #ef672f;"><!-- [ header starts here] --><tbody><tr><td valign=3D=
+"top"><table class=3D"pad_null" cellspacing=3D"0" cellpadding=3D"0" style=
+=3D"border-collapse:collapse;" width=3D"100%" bgcolor=3D"#ffffff"><tbody><t=
+r><td colspan=3D"3"><img src=3D"https://mp-static.magento.com/admin/emails/=
+images/blank_email.gif" alt=3D"" width=3D"1" height=3D"20" border=3D"0" sty=
+le=3D"display:block"> </td></tr><tr><td width=3D"20"><img src=3D"https://mp=
+-static.magento.com/admin/emails/images/blank_email.gif" alt=3D"" width=3D"=
+20" height=3D"1" border=3D"0" style=3D"display:block"> </td><td><a href=3D"=
+https://developer.magento.com/" style=3D"text-decoration: none"><img src=3D=
+"https://mp-static.magento.com/admin/emails/images/Developer_Logo.png" alt=
+=3D"Magento Marketplace" width=3D"41.25%" border=3D"0"> </a></td><td width=
+=3D"20"><img src=3D"https://mp-static.magento.com/admin/emails/images/blank=
+_email.gif" alt=3D"" width=3D"20" height=3D"1" border=3D"0" style=3D"displa=
+y:block"> </td></tr><tr><td colspan=3D"3"><img src=3D"https://mp-static.mag=
+ento.com/admin/emails/images/blank_email.gif" alt=3D"" width=3D"1" height=
+=3D"20" border=3D"0" style=3D"display:block"> </td></tr></tbody></table></t=
+d></tr><!-- THE body_html BLOCK IS CRITICALLY IMPORTANT --><!-- All templat=
+es that inherit from this template MUST implement this block --><!-- This b=
+lock also has to be manually replaced in template exporting code --><!-- Te=
+mplates are exported in the following places --><!-- Web Server (email prev=
+iew) \src\AppBundle\Controller\DevPortalController.php::previewEmailAction(=
+) --><!-- Api Server (historical email view) \src\Magento\NotificationBundl=
+e\Controller\EmailController.php::getVersionEmailAction() --><tr><td valign=
+=3D"top"><table class=3D"pad_null" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:collapse;" width=3D"100%"><tbody><tr><td colspan=3D"3"=
+><img src=3D"https://mp-static.magento.com/admin/emails/images/blank_email.=
+gif" alt=3D"" width=3D"1" height=3D"40" border=3D"0" style=3D"display:block=
+"> </td></tr><tr><td width=3D"20"><img src=3D"https://mp-static.magento.com=
+/admin/emails/images/blank_email.gif" alt=3D"" width=3D"20" height=3D"1" bo=
+rder=3D"0" style=3D"display:block"> </td><td><table><tbody><tr><td valign=
+=3D"top"><p style=3D"color:#121212; font-size: 11pt; line-height:20px; marg=
+in:0; padding: 0; font-family: Calibri, Arial, helvetica, sans-serif;">Plea=
+se review the following announcement. To see the entire list, log into <a h=
+ref=3D"https://developer.magento.com" target=3D"_blank">Magento Marketplace=
+ Developer Portal</a> and click on the <strong>Resources</strong> option on=
+ the top menu bar. </p></td></tr><tr><td><img src=3D"https://mp-static.mage=
+nto.com/admin/emails/images/blank_email.gif" alt=3D"" width=3D"1" height=3D=
+"20" border=3D"0" style=3D"display:block"> </td></tr><tr><td valign=3D"top"=
+><p style=3D"color:#121212; font-size: 11pt; line-height:20px; margin:0; pa=
+dding: 0; font-family: Calibri, Arial, helvetica, sans-serif;"><strong>Mage=
+nto Cloud Docker</strong></p></td></tr><tr><td><img src=3D"https://mp-stati=
+c.magento.com/admin/emails/images/blank_email.gif" alt=3D"" width=3D"1" hei=
+ght=3D"20" border=3D"0" style=3D"display:block"> </td></tr><tr><td valign=
+=3D"top"><p style=3D"color:#121212; font-size: 11pt; line-height:20px; marg=
+in:0; padding: 0; font-family: Calibri, Arial, helvetica, sans-serif;"></p>=
+<div id=3D"main-content" class=3D"wiki-content" data-ol-has-click-handler=
+=3D""><p>Dear Magento Marketplace extension vendors,</p><p><span style=3D"c=
+olor: #172b4d;">Just a quick reminder that EQP uses&nbsp;<a class=3D"extern=
+al-link" href=3D"https://devdocs.magento.com/cloud/docker/docker-developmen=
+t.html" target=3D"_blank" data-ext-link-init=3D"true">Magento Cloud Docker<=
+/a> environments for automated and <a class=3D"external-link" href=3D"https=
+://devdocs.magento.com/marketplace/sellers/technical-review-guidelines.html=
+" target=3D"_blank" data-ext-link-init=3D"true">manual Technical Review</a>=
+</span>.<br>This means that we ensure that all new product submissions to M=
+agento Marketplace compatible with Magento Cloud and follow Magento's best =
+practices in the environment configuration.<br>Mainly, this change contribu=
+tes to general consistency among testing environments, not only between our=
+ internal automated and manual testing flows but also gives our customers t=
+he opportunity to obtain a similar environment for development and testing.=
+</p><p>How does it impact me?</p><p>Now you can configure a local environme=
+nt that is <span class=3D"inline-comment-marker" data-ref=3D"723cc259-3d98-=
+4933-bb3d-f08af42b92e3">identical</span>&nbsp;to those that we use. Thus yo=
+u will be able to identify potential issues before submitting an extension =
+to us.<br>In case when extension got rejected you can try to replicate the =
+issue locally on the &quot;standardized&quot; environment and avoid going b=
+ack and forth involving our support engineers, trying to identify those tin=
+y differences between environments that we might have.</p><p>Check <span cl=
+ass=3D"inline-comment-marker" data-ref=3D"2ca4ed8f-1b5c-4fbc-8b01-bbd3f0650=
+7a4">out wonderful, well-detailed</span>&nbsp;<a class=3D"external-link" st=
+yle=3D"text-decoration: none;" title=3D"Follow link" href=3D"https://devdoc=
+s.magento.com/cloud/docker/docker-development.html" target=3D"_blank" data-=
+ext-link-init=3D"true">Magento Cloud documentation</a>&nbsp;where you will =
+find out how to set up Cloud Docker locally and many other environment-rela=
+ted aspects.</p><p>Having questions?<br>Feel free to <span class=3D"inline-=
+comment-marker" data-ref=3D"bbf166b3-dd3d-4e91-9ce4-76a361a93267">contact u=
+s in&nbsp;<a class=3D"external-link" href=3D"http://magentocommeng.slack.co=
+m" target=3D"_blank" data-ext-link-init=3D"true">Magento Community Engineer=
+ing slack</a></span>&nbsp;or ask Cloud Docker related questions in&nbsp;<a =
+class=3D"external-link" style=3D"text-decoration: none;" title=3D"Follow li=
+nk" href=3D"https://devdocs.magento.com/cloud/docker/docker-troubleshooting=
+.html" target=3D"_blank" data-ext-link-init=3D"true">Cloud Docker support</=
+a>&nbsp;channels.</p></div><p></p></td></tr><tr><td><img src=3D"https://mp-=
+static.magento.com/admin/emails/images/blank_email.gif" alt=3D"" width=3D"1=
+" height=3D"20" border=3D"0" style=3D"display:block"> </td></tr><tr><td val=
+ign=3D"top"><p style=3D"color:#121212; font-size: 11pt; line-height:26px; m=
+argin:0; padding: 0;">Best Regards,</p></td></tr><tr><td valign=3D"top"><p =
+style=3D"color:#121212; font-size: 11pt; line-height:20px; margin:0; paddin=
+g: 0;">The Magento Marketplace Team</p></td></tr></tbody></table></td><td w=
+idth=3D"20"><img src=3D"https://mp-static.magento.com/admin/emails/images/b=
+lank_email.gif" alt=3D"" width=3D"20" height=3D"1" border=3D"0" style=3D"di=
+splay:block"> </td></tr><tr><td colspan=3D"3"><img src=3D"https://mp-static=
+.magento.com/admin/emails/images/blank_email.gif" alt=3D"" width=3D"1" heig=
+ht=3D"40" border=3D"0" style=3D"display:block"> </td></tr></tbody></table><=
+/td></tr><tr><td bgcolor=3D"#31302b" style=3D"background:#31302b;"><table c=
+lass=3D"pad_null" cellspacing=3D"0" cellpadding=3D"0" style=3D"border-colla=
+pse:collapse;" width=3D"100%"><tbody><tr><td colspan=3D"3"><img src=3D"http=
+s://mp-static.magento.com/admin/emails/images/blank_email.gif" alt=3D"" wid=
+th=3D"1" height=3D"20" border=3D"0" style=3D"display:block"> </td></tr><tr>=
+<td width=3D"20"><img src=3D"https://mp-static.magento.com/admin/emails/ima=
+ges/blank_email.gif" alt=3D"" width=3D"20" height=3D"1" border=3D"0" style=
+=3D"display:block"> </td><td><table class=3D"pad_null" cellspacing=3D"0" ce=
+llpadding=3D"0" style=3D"border-collapse:collapse;" width=3D"608"><tbody><t=
+r><td><a href=3D"https://magento.com/" style=3D"text-decoration: none"><img=
+ src=3D"https://mp-static.magento.com/admin/emails/images/Magento_Logo.png"=
+ alt=3D"Magento Marketplace" width=3D"150" height=3D"50" border=3D"0"> </a>=
+</td><td valign=3D"middle" align=3D"right"><table class=3D"pad_null" cellsp=
+acing=3D"0" cellpadding=3D"0" style=3D"border-collapse:collapse;"><tbody><t=
+r valign=3D"middle"><td><a href=3D"http://www.facebook.com/magento" target=
+=3D"_blank"><img src=3D"https://mp-static.magento.com/admin/emails/images/f=
+acebook_email_icon.png" alt=3D"Facebook" width=3D"30" height=3D"20" border=
+=3D"0" style=3D"display:block"> </a></td><td><a href=3D"https://twitter.com=
+/magento" target=3D"_blank"><img src=3D"https://mp-static.magento.com/admin=
+/emails/images/twitter_email_icon.png" alt=3D"Twitter" width=3D"30" height=
+=3D"20" border=3D"0" style=3D"display:block"> </a></td><td><a href=3D"http:=
+//www.youtube.com/user/magentocommerce/featured" target=3D"_blank"><img src=
+=3D"https://mp-static.magento.com/admin/emails/images/youtube_email_icon.pn=
+g" alt=3D"Youtube" width=3D"30" height=3D"20" border=3D"0" style=3D"display=
+:block"> </a></td><td><a href=3D"http://www.linkedin.com/groups?home=3D&amp=
+;gid=3D146360&amp;trk=3Danet_ug_hm" target=3D"_blank"><img src=3D"https://m=
+p-static.magento.com/admin/emails/images/linkedin_email_icon.png" alt=3D"Li=
+nkedin" width=3D"25" height=3D"20" border=3D"0" style=3D"display:block"> </=
+a></td></tr></tbody></table></td></tr><tr><td colspan=3D"2"><img src=3D"htt=
+ps://mp-static.magento.com/admin/emails/images/blank_email.gif" alt=3D"" wi=
+dth=3D"1" height=3D"20" border=3D"0" style=3D"display:block"> </td></tr><tr=
+><td valign=3D"middle" colspan=3D"2"><p style=3D"font-size: 15px; line-heig=
+ht: 40px; margin:0; color: #cac3b4; border-top: 1px solid #636363; padding:=
+ 0;">Copyright =C2=A9 2021 Magento Marketplace. All rights reserved.</p></t=
+d></tr></tbody></table></td><td width=3D"20"><img src=3D"https://mp-static.=
+magento.com/admin/emails/images/blank_email.gif" alt=3D"" width=3D"20" heig=
+ht=3D"1" border=3D"0" style=3D"display:block"> </td></tr><tr><td colspan=3D=
+"3"><img src=3D"https://mp-static.magento.com/admin/emails/images/blank_ema=
+il.gif" alt=3D"" width=3D"1" height=3D"10" border=3D"0" style=3D"display:bl=
+ock"> </td></tr></tbody></table></td></tr></tbody></table></td></tr><tr><td=
+><img src=3D"https://mp-static.magento.com/admin/emails/images/blank_email.=
+gif" alt=3D"" width=3D"1" height=3D"10" border=3D"0" style=3D"display:block=
+"> </td></tr></tbody></table></div><img src=3D"http://mail.magento.com/wf/o=
+pen?upn=3DdYgp-2F1bGPReP7gV8qGLa0s0VaxOIHwmASrj84q8NsHOcfhpd7lP2Lfwr4-2BG7C=
+LWnpFhM26L217qDkVuOsNPh4vs531rRruAIDaAI5Dm14eBtyaPnR0wC2Oi9K2hssEjOf-2BrHfl=
+KnJUdLqbkpmwsA93o-2BhyJb0J4ogiSaTv5GwIeJTOOEKwTwQpBB3V4OZYHBZkwFjvJWuaaRWRd=
+zD1yTO25-2BzlsFTh4DLCStQInWpjs-3D" alt=3D"" width=3D"1" height=3D"1" border=
+=3D"0" style=3D"height:1px !important;width:1px !important;border-width:0 !=
+important;margin-top:0 !important;margin-bottom:0 !important;margin-right:0=
+ !important;margin-left:0 !important;padding-top:0 !important;padding-botto=
+m:0 !important;padding-right:0 !important;padding-left:0 !important;"> </bo=
+dy></html>=
