@@ -9,11 +9,7 @@ function GoBackButton() {
     history.goBack()
   }
   return (
-    <Button
-      variant="secondary"
-      className="mr-1"
-      onClick={() => gobackHandler()}
-    >
+    <Button variant="dark" className="mr-1" onClick={() => gobackHandler()}>
       Ga Terug
     </Button>
   )

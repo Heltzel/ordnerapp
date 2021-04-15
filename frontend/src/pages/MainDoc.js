@@ -5,12 +5,15 @@ import { useParams } from 'react-router'
 import GoBackButton from '../components/buttons/GoBackButton'
 import HomeButton from '../components/buttons/HomeButton'
 import CardHeader from '../components/card/CardHeader'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
+import InfoButton from '../components/buttons/InfoButton'
 
 function MainDoc() {
   const URL = 'http://localhost:5000/'
   const { id } = useParams()
   const [maindoc, setMaindoc] = useState([])
   const [attachments, setAttachments] = useState([])
+  const [showInfo, setShowInfo] = useState(true)
 
   useEffect(() => {
     axios.get(URL + `maindocs/${id}/show`).then((resp) => {
@@ -19,13 +22,26 @@ function MainDoc() {
       console.log(resp.data.data)
     })
   }, [id])
+
+  const removeAlertHandler = (e) => {
+    e.preventDefault()
+  }
   return (
     <Card className="mt-4 " style={{ minHeight: '80vh' }}>
       <Card.Body>
         <CardHeader title={maindoc.name} subtitle={maindoc.note} />
         {maindoc.alert && (
-          <Alert variant="danger" className="mt-2">
+          <Alert
+            variant="danger"
+            className="mt-2 d-flex justify-content-between"
+          >
             {maindoc.alert}
+
+            <AiOutlineCloseCircle
+              style={{ fontSize: '1.5rem', cursor: 'pointer' }}
+              onClick={removeAlertHandler}
+              title="Verwijder Alert"
+            />
           </Alert>
         )}
         <h6>Attachments:</h6>
@@ -34,9 +50,21 @@ function MainDoc() {
             <thead>
               <tr>
                 <th>Datum</th>
-                <th>Title</th>
+                <th className="d-flex justify-content-between">
+                  <span> Titel</span>
+                  {showInfo && (
+                    <small class="text-muted">Dubbel click om te openen</small>
+                  )}
+                </th>
                 <th>Opmerking</th>
-                <th>Alert</th>
+                <th className="d-flex justify-content-between">
+                  <span> Alert</span>
+                  {showInfo && (
+                    <small class="text-muted">
+                      Dubbel click om te verwijderen
+                    </small>
+                  )}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -48,9 +76,15 @@ function MainDoc() {
                         .toLocaleString('nl-NL')
                         .substr(0, 9)}
                     </td>
-                    <td>{item.name}</td>
+                    <td>
+                      <span style={{ cursor: 'pointer' }}>{item.name}</span>
+                    </td>
                     <td>{item.note}</td>
-                    <td className="text-danger">{item.alert}</td>
+                    <td className="text-danger">
+                      {item.alert && (
+                        <span style={{ cursor: 'pointer' }}>{item.alert}</span>
+                      )}
+                    </td>
                   </tr>
                 )
               })}
@@ -63,7 +97,10 @@ function MainDoc() {
           <span>
             <GoBackButton />
           </span>
-          <HomeButton />
+          <span>
+            <InfoButton showInfo={showInfo} setShowInfo={setShowInfo} />
+            <HomeButton />
+          </span>
         </div>
       </Card.Body>
     </Card>
