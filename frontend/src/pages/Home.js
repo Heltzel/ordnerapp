@@ -1,21 +1,18 @@
-import axios from 'axios'
 import { Card, Table } from 'react-bootstrap'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import CreateNewButton from '../components/buttons/CreateNewButton'
 import CardHeader from '../components/card/CardHeader'
+import { fetchOrdners } from '../redux'
+import { connect } from 'react-redux'
 
-function Home() {
-  const URL = 'http://localhost:5000/'
-  const [ordnerList, setOrdnerList] = useState([])
+function Home({ fetchOrdners, ordnerList, loading }) {
   useEffect(() => {
-    axios
-      .get(URL + 'ordners/index')
-      .then((resp) => setOrdnerList(resp.data.data))
-      .catch((err) => console.log(err))
-  }, [])
+    fetchOrdners()
+  }, [fetchOrdners])
+
   return (
-    <Card className="mt-4" style={{ height: '80vh' }}>
+    <Card className="mt-4">
       <Card.Body>
         <CardHeader title={'Home'} subtitle={'Alle Ordners'} />
 
@@ -51,4 +48,18 @@ function Home() {
   )
 }
 
-export default Home
+const mapStateToProps = (state) => {
+  return {
+    loading: state.ordner.loading,
+    ordnerList: state.ordner.ordners,
+    errorMsg: state.ordner.errorMsg,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchOrdners: () => dispatch(fetchOrdners()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
