@@ -21,7 +21,7 @@ function Ordner({ match }) {
   }, [id])
 
   return (
-    <Card className="mt-4" style={{ height: '80vh' }}>
+    <Card className="mt-4 ">
       <Card.Body>
         <CardHeader title={`${ordner.name} ordner`} subtitle={ordner.note} />
         <Table striped bordered hover className="mt-4">
@@ -48,18 +48,18 @@ function Ordner({ match }) {
             })}
           </tbody>
         </Table>
-        <div className="action-group d-flex justify-content-between mt-4">
-          <span>
-            <GoBackButton />
-            <CreateNewButton
-              route={'/ordners/create'}
-              type={'button'}
-              title={'Nieuw Document'}
-            />
-          </span>
-          <HomeButton />
-        </div>
       </Card.Body>
+      <div className="action-group d-flex justify-content-between mx-3 my-4">
+        <span>
+          <GoBackButton />
+          <CreateNewButton
+            route={'/ordners/create'}
+            type={'button'}
+            title={'Nieuw Document'}
+          />
+        </span>
+        <HomeButton />
+      </div>
     </Card>
   )
 }

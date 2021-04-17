@@ -3,13 +3,13 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import CreateNewButton from '../components/buttons/CreateNewButton'
 import CardHeader from '../components/card/CardHeader'
-import { fetchOrdners } from '../redux'
+import { fetchHome } from '../redux'
 import { connect } from 'react-redux'
 
-function Home({ fetchOrdners, ordnerList, loading }) {
+function Home({ fetchHome, homeList, loading }) {
   useEffect(() => {
-    fetchOrdners()
-  }, [fetchOrdners])
+    fetchHome()
+  }, [fetchHome])
 
   return (
     <Card className="mt-4">
@@ -23,7 +23,7 @@ function Home({ fetchOrdners, ordnerList, loading }) {
             </tr>
           </thead>
           <tbody>
-            {ordnerList.map((item) => {
+            {homeList.map((item) => {
               return (
                 <tr key={item.id}>
                   <td>
@@ -36,29 +36,29 @@ function Home({ fetchOrdners, ordnerList, loading }) {
             })}
           </tbody>
         </Table>
-        <div className="action-group mt-4">
-          <CreateNewButton
-            route={'ordners/create'}
-            type={''}
-            title={'Nieuwe Ordner'}
-          />
-        </div>
       </Card.Body>
+      <div className="action-group d-flex justify-content-between mx-3 my-4">
+        <CreateNewButton
+          route={'ordners/create'}
+          type={''}
+          title={'Nieuwe Ordner'}
+        />
+      </div>
     </Card>
   )
 }
 
 const mapStateToProps = (state) => {
   return {
-    loading: state.ordner.loading,
-    ordnerList: state.ordner.ordners,
-    errorMsg: state.ordner.errorMsg,
+    loading: state.home.loading,
+    homeList: state.home.ordners,
+    errorMsg: state.home.errorMsg,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchOrdners: () => dispatch(fetchOrdners()),
+    fetchHome: () => dispatch(fetchHome()),
   }
 }
 

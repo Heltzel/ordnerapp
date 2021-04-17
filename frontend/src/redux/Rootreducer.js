@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import ordnerReducer from './ordner/OrdnerReducer'
+import homeReducer from './home/HomeReducer'
 
 const rootReducer = combineReducers({
-  ordner: ordnerReducer,
+  home: homeReducer,
 })
 
 export default rootReducer

@@ -27,13 +27,14 @@ function MainDoc() {
     e.preventDefault()
   }
   return (
-    <Card className="mt-4 " style={{ minHeight: '80vh' }}>
+    <Card className="mt-4 ">
       <Card.Body>
         <CardHeader title={maindoc.name} subtitle={maindoc.note} />
         {maindoc.alert && (
           <Alert
-            variant="danger"
+            variant={maindoc.alert ? 'danger' : 'transparent'}
             className="mt-2 d-flex justify-content-between"
+            style={maindoc.alert ? {} : { color: 'transparent' }}
           >
             {maindoc.alert}
 
@@ -53,14 +54,16 @@ function MainDoc() {
                 <th className="d-flex justify-content-between">
                   <span> Titel</span>
                   {showInfo && (
-                    <small class="text-muted">Dubbel click om te openen</small>
+                    <small className="text-muted">
+                      Dubbel click om te openen
+                    </small>
                   )}
                 </th>
                 <th>Opmerking</th>
                 <th className="d-flex justify-content-between">
                   <span> Alert</span>
                   {showInfo && (
-                    <small class="text-muted">
+                    <small className="text-muted">
                       Dubbel click om te verwijderen
                     </small>
                   )}
@@ -93,16 +96,16 @@ function MainDoc() {
         ) : (
           'Geen attachments'
         )}
-        <div className="action-group d-flex justify-content-between ">
-          <span>
-            <GoBackButton />
-          </span>
-          <span>
-            <InfoButton showInfo={showInfo} setShowInfo={setShowInfo} />
-            <HomeButton />
-          </span>
-        </div>
       </Card.Body>
+      <div className="action-group d-flex justify-content-between mx-3 my-4">
+        <span>
+          <GoBackButton />
+        </span>
+        <span>
+          <InfoButton showInfo={showInfo} setShowInfo={setShowInfo} />
+          <HomeButton />
+        </span>
+      </div>
     </Card>
   )
 }
