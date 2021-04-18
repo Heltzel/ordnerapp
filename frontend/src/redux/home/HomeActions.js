@@ -33,7 +33,6 @@ export const fetchHome = () => {
       .get(URL + 'ordners/index')
       .then((resp) => {
         const homeData = resp.data.data
-        console.log(homeData)
         dispatch(fetchHomeSuccess(homeData))
       })
       .catch((err) => {

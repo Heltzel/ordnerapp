@@ -13,13 +13,12 @@ function MainDoc() {
   const { id } = useParams()
   const [maindoc, setMaindoc] = useState([])
   const [attachments, setAttachments] = useState([])
-  const [showInfo, setShowInfo] = useState(true)
+  const [showInfo, setShowInfo] = useState(false)
 
   useEffect(() => {
     axios.get(URL + `maindocs/${id}/show`).then((resp) => {
       setMaindoc(resp.data.data[0])
       setAttachments(resp.data.data[0].Attached_docs)
-      console.log(resp.data.data)
     })
   }, [id])
 
@@ -53,20 +52,24 @@ function MainDoc() {
                 <th>Datum</th>
                 <th className="d-flex justify-content-between">
                   <span> Titel</span>
-                  {showInfo && (
-                    <small className="text-muted">
-                      Dubbel click om te openen
-                    </small>
-                  )}
+                  <span
+                    style={
+                      showInfo ? { color: 'grey' } : { color: 'transparent' }
+                    }
+                  >
+                    <small>Dubbel click om te openen</small>
+                  </span>
                 </th>
                 <th>Opmerking</th>
                 <th className="d-flex justify-content-between">
                   <span> Alert</span>
-                  {showInfo && (
-                    <small className="text-muted">
-                      Dubbel click om te verwijderen
-                    </small>
-                  )}
+                  <span
+                    style={
+                      showInfo ? { color: 'grey' } : { color: 'transparent' }
+                    }
+                  >
+                    <small>Dubbel click om te verwijderen</small>
+                  </span>
                 </th>
               </tr>
             </thead>

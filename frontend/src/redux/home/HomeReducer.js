@@ -10,7 +10,7 @@ const initialState = {
   errorMsg: '',
 }
 
-const ordnerReducer = (state = initialState, action) => {
+const homeReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_HOME_REQUEST:
       return {
@@ -38,4 +38,4 @@ const ordnerReducer = (state = initialState, action) => {
   }
 }
 
-export default ordnerReducer
+export default homeReducer

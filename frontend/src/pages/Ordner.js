@@ -1,53 +1,56 @@
-import axios from 'axios'
-import { Card, Table } from 'react-bootstrap'
-import React, { useEffect, useState } from 'react'
-import GoBackButton from '../components/buttons/GoBackButton'
-import CardHeader from '../components/card/CardHeader'
-import CreateNewButton from '../components/buttons/CreateNewButton'
+// import axios from 'axios'
+import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { Alert, Card, Table } from 'react-bootstrap'
+import CardHeader from '../components/card/CardHeader'
+import GoBackButton from '../components/buttons/GoBackButton'
+import CreateNewButton from '../components/buttons/CreateNewButton'
 import HomeButton from '../components/buttons/HomeButton'
+import { fetchSingleOrdner } from '../redux'
+import { connect } from 'react-redux'
 
-function Ordner({ match }) {
-  const URL = 'http://localhost:5000/'
-  const [ordner, setOrdner] = useState([])
-  const [maindocs, setMaindocs] = useState([])
-
+function Ordner({ fetchSingleOrdner, ordner, maindocs, loading }) {
   const { id } = useParams()
+
   useEffect(() => {
-    axios.get(URL + `ordners/${id}/show`).then((resp) => {
-      setOrdner(resp.data.data[0])
-      setMaindocs(resp.data.data[0].Main_docs)
-    })
-  }, [id])
+    fetchSingleOrdner(id)
+  }, [fetchSingleOrdner, id])
 
   return (
     <Card className="mt-4 ">
       <Card.Body>
-        <CardHeader title={`${ordner.name} ordner`} subtitle={ordner.note} />
-        <Table striped bordered hover className="mt-4">
-          <thead>
-            <tr>
-              <th>Datum</th>
-              <th>Onderwerp</th>
-            </tr>
-          </thead>
-          <tbody>
-            {maindocs.map((item) => {
-              return (
-                <tr key={item.id}>
-                  <td>
-                    {new Date(item.createdAt)
-                      .toLocaleString('nl-NL')
-                      .substr(0, 9)}{' '}
-                  </td>
-                  <td>
-                    <Link to={`/maindocs/${item.id}`}>{item.name}</Link>
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </Table>
+        {!loading && (
+          <CardHeader title={`${ordner.name} ordner`} subtitle={ordner.note} />
+        )}
+        <h6 className="mt-2">Documenten:</h6>
+        {!loading && typeof maindocs !== 'undefined' ? (
+          <Table striped bordered hover className="mt-4">
+            <thead>
+              <tr>
+                <th>Datum</th>
+                <th>Onderwerp</th>
+              </tr>
+            </thead>
+            <tbody>
+              {maindocs.map((item) => {
+                return (
+                  <tr key={item.id}>
+                    <td>
+                      {new Date(item.createdAt)
+                        .toLocaleString('nl-NL')
+                        .substr(0, 9)}{' '}
+                    </td>
+                    <td>
+                      <Link to={`/maindocs/${item.id}`}>{item.name}</Link>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </Table>
+        ) : (
+          <span> Geen documenten</span>
+        )}
       </Card.Body>
       <div className="action-group d-flex justify-content-between mx-3 my-4">
         <span>
@@ -64,4 +67,24 @@ function Ordner({ match }) {
   )
 }
 
-export default Ordner
+const mapStateToProps = (state) => {
+  let tempMaindocs
+  if (typeof state.ordner.ordner !== 'undefined') {
+    tempMaindocs = state.ordner.ordner.Main_docs
+  } else {
+    tempMaindocs = []
+  }
+
+  return {
+    loading: state.ordner.loading,
+    ordner: state.ordner.ordner,
+    maindocs: tempMaindocs,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchSingleOrdner: (id) => dispatch(fetchSingleOrdner(id)),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Ordner)
