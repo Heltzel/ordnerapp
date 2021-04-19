@@ -1,26 +1,21 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Alert, Card, Table } from 'react-bootstrap'
 import { useParams } from 'react-router'
-import GoBackButton from '../components/buttons/GoBackButton'
-import HomeButton from '../components/buttons/HomeButton'
+import { Alert, Card, Table } from 'react-bootstrap'
 import CardHeader from '../components/card/CardHeader'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
+import GoBackButton from '../components/buttons/GoBackButton'
 import InfoButton from '../components/buttons/InfoButton'
+import HomeButton from '../components/buttons/HomeButton'
+import { fetchMaindoc } from '../redux'
+import { connect } from 'react-redux'
 
-function MainDoc() {
-  const URL = 'http://localhost:5000/'
+function MainDoc({ fetchMaindoc, maindoc, attachments, loading }) {
   const { id } = useParams()
-  const [maindoc, setMaindoc] = useState([])
-  const [attachments, setAttachments] = useState([])
   const [showInfo, setShowInfo] = useState(false)
 
   useEffect(() => {
-    axios.get(URL + `maindocs/${id}/show`).then((resp) => {
-      setMaindoc(resp.data.data[0])
-      setAttachments(resp.data.data[0].Attached_docs)
-    })
-  }, [id])
+    fetchMaindoc(id)
+  }, [fetchMaindoc, id])
 
   const removeAlertHandler = (e) => {
     e.preventDefault()
@@ -112,5 +107,20 @@ function MainDoc() {
     </Card>
   )
 }
+const mapStateToProps = (state) => {
+  return {
+    loading: state.maindoc.loading,
+    maindoc: state.maindoc.maindoc,
+    attachments: state.maindoc.attachments,
+  }
+}
 
-export default MainDoc
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchMaindoc: (id) => {
+      dispatch(fetchMaindoc(id))
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainDoc)

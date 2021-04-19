@@ -7,6 +7,7 @@ import {
 const initialState = {
   loading: true,
   ordners: [],
+  maindocs: [],
   errorMsg: '',
 }
 
@@ -22,6 +23,7 @@ const ordnerReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         ordner: action.payload,
+        maindocs: action.payload.Main_docs,
         errorMsg: '',
       }
     case FETCH_ORDNER_FAILURE:
@@ -29,6 +31,7 @@ const ordnerReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         ordner: [],
+        maindocs: [],
         errorMsg: action.payload,
       }
 

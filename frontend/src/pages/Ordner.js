@@ -1,7 +1,6 @@
-// import axios from 'axios'
 import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Alert, Card, Table } from 'react-bootstrap'
+import { Card, Table } from 'react-bootstrap'
 import CardHeader from '../components/card/CardHeader'
 import GoBackButton from '../components/buttons/GoBackButton'
 import CreateNewButton from '../components/buttons/CreateNewButton'
@@ -23,7 +22,8 @@ function Ordner({ fetchSingleOrdner, ordner, maindocs, loading }) {
           <CardHeader title={`${ordner.name} ordner`} subtitle={ordner.note} />
         )}
         <h6 className="mt-2">Documenten:</h6>
-        {!loading && typeof maindocs !== 'undefined' ? (
+        {maindocs.length < 1 && 'empty'}
+        {!loading && maindocs.length > 1 ? (
           <Table striped bordered hover className="mt-4">
             <thead>
               <tr>
@@ -68,17 +68,10 @@ function Ordner({ fetchSingleOrdner, ordner, maindocs, loading }) {
 }
 
 const mapStateToProps = (state) => {
-  let tempMaindocs
-  if (typeof state.ordner.ordner !== 'undefined') {
-    tempMaindocs = state.ordner.ordner.Main_docs
-  } else {
-    tempMaindocs = []
-  }
-
   return {
     loading: state.ordner.loading,
     ordner: state.ordner.ordner,
-    maindocs: tempMaindocs,
+    maindocs: state.ordner.maindocs,
   }
 }
 

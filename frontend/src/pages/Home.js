@@ -49,7 +49,6 @@ function Home({ fetchHome, homeList, loading }) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.home)
   return {
     loading: state.home.loading,
     homeList: state.home.ordners,
