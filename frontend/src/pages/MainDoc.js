@@ -8,6 +8,7 @@ import InfoButton from '../components/buttons/InfoButton'
 import HomeButton from '../components/buttons/HomeButton'
 import { fetchMaindoc } from '../redux'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function MainDoc({ fetchMaindoc, maindoc, attachments, loading }) {
   const { id } = useParams()
@@ -73,12 +74,12 @@ function MainDoc({ fetchMaindoc, maindoc, attachments, loading }) {
                 return (
                   <tr key={item.id}>
                     <td>
-                      {new Date(item.createdAt)
+                      {new Date(item.updatedAt)
                         .toLocaleString('nl-NL')
                         .substr(0, 9)}
                     </td>
                     <td>
-                      <span style={{ cursor: 'pointer' }}>{item.name}</span>
+                      <Link to={`/attachments/${item.id}`}>{item.name}</Link>
                     </td>
                     <td>{item.note}</td>
                     <td className="text-danger">
@@ -112,6 +113,7 @@ const mapStateToProps = (state) => {
     loading: state.maindoc.loading,
     maindoc: state.maindoc.maindoc,
     attachments: state.maindoc.attachments,
+    errorMsg: state.maindoc.errorMsg,
   }
 }
 

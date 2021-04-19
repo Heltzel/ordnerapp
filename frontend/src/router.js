@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Attachement from './pages/Attachement'
 import NewOrdner from './pages/forms/NewOrdner'
 import Home from './pages/Home'
 import MainDoc from './pages/MainDoc'
@@ -13,6 +14,7 @@ const RouterComp = () => {
         <Route path="/maindocs/:id" component={MainDoc} />
         <Route path="/ordners/create" component={NewOrdner} />
         <Route exact path="/ordners/:id" component={Ordner} />
+        <Route exact path="/attachments/:id" component={Attachement} />
       </Switch>
     </Router>
   )
