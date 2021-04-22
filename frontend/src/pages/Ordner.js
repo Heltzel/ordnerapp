@@ -58,7 +58,7 @@ function Ordner({ fetchSingleOrdner, ordner, maindocs, loading }) {
         <span>
           <GoBackButton />
           <CreateNewButton
-            route={'/ordners/create'}
+            route={`/maindocs/create/${id}`}
             type={'button'}
             title={'Nieuw Document'}
           />

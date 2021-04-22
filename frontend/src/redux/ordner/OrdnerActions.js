@@ -51,6 +51,9 @@ export const postNewOrdner = (name, note) => {
       .then((resp) => {
         console.log(resp)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        const errorMsg = err
+        dispatch(fetchOrdnerFailure(errorMsg))
+      })
   }
 }
