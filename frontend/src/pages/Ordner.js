@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Card, Table } from 'react-bootstrap'
 import CardHeader from '../components/card/CardHeader'
-import GoBackButton from '../components/buttons/GoBackButton'
-import CreateNewButton from '../components/buttons/CreateNewButton'
-import HomeButton from '../components/buttons/HomeButton'
+import {
+  CreateNewButton,
+  GoBackButton,
+  HomeButton,
+} from '../components/buttons'
 import { fetchSingleOrdner } from '../redux'
 import { connect } from 'react-redux'
 

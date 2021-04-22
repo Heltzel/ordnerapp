@@ -1,7 +1,7 @@
 import { Card, Table } from 'react-bootstrap'
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import CreateNewButton from '../components/buttons/CreateNewButton'
+import { CreateNewButton } from '../components/buttons'
 import CardHeader from '../components/card/CardHeader'
 import { fetchHome } from '../redux'
 import { connect } from 'react-redux'

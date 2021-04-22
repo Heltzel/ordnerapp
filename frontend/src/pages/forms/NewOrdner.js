@@ -1,37 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, Form } from 'react-bootstrap'
-import CreateNewButton from '../../components/buttons/CreateNewButton'
-import GoBackButton from '../../components/buttons/GoBackButton'
-import HomeButton from '../../components/buttons/HomeButton'
 import CardHeader from '../../components/card/CardHeader'
+import {
+  GoBackButton,
+  HomeButton,
+  SubmitFormButton,
+} from '../../components/buttons'
+import { postNewOrdner } from '../../redux'
+import { connect } from 'react-redux'
+import { useHistory } from 'react-router'
 
-function NewOrdner() {
+function NewOrdner({ postNewOrdner }) {
+  const [ordnerName, setOrdnerName] = useState('')
+  const [ordnerNote, setOrdnerNote] = useState('Alle documenten betreffende...')
+  const history = useHistory()
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    postNewOrdner(ordnerName, ordnerNote)
+    setOrdnerName('')
+    setOrdnerNote('Alle documenten betreffende...')
+    history.goBack()
+  }
+
   return (
-    <Card className="mt-4" style={{ height: '80vh' }}>
+    <Card className="mt-4">
       <Card.Body>
         <CardHeader
           title={'Nieuwe Ordner'}
           subtitle={'Maak een nieuwe ordner aan'}
         />
-        <Form className="mt-4">
+        <Form className="mt-4" onSubmit={submitHandler}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label className="pl-2">Ordner Naam</Form.Label>
-            <Form.Control type="text" placeholder="v.b. Telecom" />
+            <Form.Control
+              type="text"
+              value={ordnerName}
+              onChange={(e) => setOrdnerName(e.target.value)}
+              placeholder="v.b. Telecom"
+              required
+            />
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label className="pl-2">Sub Titel</Form.Label>
-            <Form.Control type="text" value="Alle documenten betreffende..." />
+            <Form.Control
+              type="text"
+              onChange={(e) => setOrdnerNote(e.target.value)}
+              value={ordnerNote}
+              required
+            />
           </Form.Group>
-          <div className="action-group d-flex justify-content-between mt-4">
+          <div className="action-group d-flex justify-content-between mx-3 my-4">
             <span>
               <GoBackButton />
-
-              <CreateNewButton
-                route={''}
-                title={'Ordner Toevoegen'}
-                type={'submit'}
-              />
+              <SubmitFormButton title={'Nieuwe Ordner'} />
             </span>
             <HomeButton />
           </div>
@@ -41,4 +64,11 @@ function NewOrdner() {
   )
 }
 
-export default NewOrdner
+const mapDispatchToProps = (dispatch) => {
+  return {
+    postNewOrdner: (name, note) => {
+      dispatch(postNewOrdner(name, note))
+    },
+  }
+}
+export default connect(null, mapDispatchToProps)(NewOrdner)
