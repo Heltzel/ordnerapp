@@ -3,7 +3,12 @@ import { useParams } from 'react-router'
 import { Alert, Card, Table } from 'react-bootstrap'
 import CardHeader from '../components/card/CardHeader'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
-import { GoBackButton, HomeButton, InfoButton } from '../components/buttons'
+import {
+  CreateNewButton,
+  GoBackButton,
+  HomeButton,
+  InfoButton,
+} from '../components/buttons'
 import { fetchMaindoc } from '../redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -97,6 +102,11 @@ function MainDoc({ fetchMaindoc, maindoc, attachments, loading }) {
       <div className="action-group d-flex justify-content-between mx-3 my-4">
         <span>
           <GoBackButton />
+          <CreateNewButton
+            route={`/attachments/create/${id}`}
+            type={'button'}
+            title={'Nieuw Attachement'}
+          />
         </span>
         <span>
           <InfoButton showInfo={showInfo} setShowInfo={setShowInfo} />

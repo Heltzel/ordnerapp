@@ -85,7 +85,7 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
           <div className="action-group d-flex justify-content-between mx-1 my-4">
             <span>
               <GoBackButton />
-              <SubmitFormButton title={'Nieuw Hoofd Document'} />
+              <SubmitFormButton title={'Hoofd Document toevoegen'} />
             </span>
             <HomeButton />
           </div>
