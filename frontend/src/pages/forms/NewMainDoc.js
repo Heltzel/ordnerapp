@@ -82,7 +82,7 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
             />
           </Form.Group>
 
-          <div className="action-group d-flex justify-content-between mx-1 my-4">
+          <div className="action-group d-flex justify-content-between my-4">
             <span>
               <GoBackButton />
               <SubmitFormButton title={'Hoofd Document toevoegen'} />

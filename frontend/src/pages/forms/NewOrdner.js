@@ -51,7 +51,7 @@ function NewOrdner({ postNewOrdner }) {
               required
             />
           </Form.Group>
-          <div className="action-group d-flex justify-content-between mx-3 my-4">
+          <div className="action-group d-flex justify-content-between  my-4">
             <span>
               <GoBackButton />
               <SubmitFormButton title={'Ordner toevoegen'} />

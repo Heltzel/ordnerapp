@@ -30,7 +30,7 @@ function Ordner({ fetchSingleOrdner, ordner, maindocs, loading }) {
             <thead>
               <tr>
                 <th>Datum</th>
-                <th>Onderwerp</th>
+                <th>Hoofd documenten</th>
               </tr>
             </thead>
             <tbody>

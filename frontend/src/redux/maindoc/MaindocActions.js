@@ -26,7 +26,7 @@ export const fetchMaindocFailure = (errorMsg) => {
   }
 }
 
-export const fetchMaindoc = (id) => {
+export const fetchSingleMaindoc = (id) => {
   return (dispatch) => {
     dispatch(fetchMaindocRequest())
     axios
@@ -62,6 +62,10 @@ export const postNewMainDoc = (
       .then((resp) => {
         console.log(resp)
         // dispatch(fetchMaindocSuccess(resp.data.data))
+      })
+      .catch((err) => {
+        console.log(err)
+        // dispatch(fetchMaindocFailure(err))
       })
   }
 }

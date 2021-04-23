@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Form } from 'react-bootstrap'
 import CardHeader from '../../components/card/CardHeader'
 import {
@@ -6,9 +6,11 @@ import {
   HomeButton,
   SubmitFormButton,
 } from '../../components/buttons'
+import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router'
+import { fetchSingleMaindoc, postNewAttachment } from '../../redux'
 
-function NewAttachment() {
+function NewAttachment({ fetchSingleMaindoc, postNewAttachment, maindoc }) {
   const [attachmentName, setAttachmentName] = useState('')
   const [attachmentNote, setAttachmentNote] = useState('')
   const [attachmentAlert, setAttachmentAlert] = useState('')
@@ -17,20 +19,32 @@ function NewAttachment() {
   const { id } = useParams()
   const history = useHistory()
 
+  useEffect(() => {
+    fetchSingleMaindoc(id)
+  }, [fetchSingleMaindoc, id])
+
   const submitHandler = (e) => {
     e.preventDefault()
-
+    postNewAttachment(
+      attachmentName,
+      attachmentNote,
+      attachmentAlert,
+      attachmentUpload,
+      id,
+    )
     setAttachmentName('')
     setAttachmentNote('')
     setAttachmentAlert('')
     setAttachmentUpload('')
-    // history.goBack()
+    history.goBack()
   }
   return (
     <Card className="mt-4">
       <Card.Body>
         <CardHeader
-          title={'Nieuw Attachment'}
+          title={
+            maindoc ? `Nieuw Attachment ${maindoc.name}` : 'Nieuw Attachment'
+          }
           subtitle={'Maak een nieuw attachment aan'}
         />
 
@@ -71,7 +85,7 @@ function NewAttachment() {
             />
           </Form.Group>
 
-          <div className="action-group d-flex justify-content-between mx-1 my-4">
+          <div className="action-group d-flex justify-content-between my-4">
             <span>
               <GoBackButton />
               <SubmitFormButton title={'Attachment toevoegen'} />
@@ -84,4 +98,36 @@ function NewAttachment() {
   )
 }
 
-export default NewAttachment
+const mapStateToProps = (state) => {
+  console.log(state.maindoc.maindoc)
+  return {
+    maindoc: state.maindoc.maindoc,
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchSingleMaindoc: (id) => {
+      fetchSingleMaindoc(id)
+    },
+
+    postNewAttachment: (
+      attachmentName,
+      attachmentNote,
+      attachmentAlert,
+      attachmentUpload,
+      id,
+    ) => {
+      dispatch(
+        postNewAttachment(
+          attachmentName,
+          attachmentNote,
+          attachmentAlert,
+          attachmentUpload,
+          id,
+        ),
+      )
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewAttachment)

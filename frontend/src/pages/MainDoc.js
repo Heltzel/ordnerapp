@@ -9,17 +9,17 @@ import {
   HomeButton,
   InfoButton,
 } from '../components/buttons'
-import { fetchMaindoc } from '../redux'
+import { fetchSingleMaindoc } from '../redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-function MainDoc({ fetchMaindoc, maindoc, attachments, loading }) {
+function MainDoc({ fetchSingleMaindoc, maindoc, attachments, loading }) {
   const { id } = useParams()
   const [showInfo, setShowInfo] = useState(false)
 
   useEffect(() => {
-    fetchMaindoc(id)
-  }, [fetchMaindoc, id])
+    fetchSingleMaindoc(id)
+  }, [fetchSingleMaindoc, id])
 
   const removeAlertHandler = (e) => {
     e.preventDefault()
@@ -127,8 +127,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMaindoc: (id) => {
-      dispatch(fetchMaindoc(id))
+    fetchSingleMaindoc: (id) => {
+      dispatch(fetchSingleMaindoc(id))
     },
   }
 }

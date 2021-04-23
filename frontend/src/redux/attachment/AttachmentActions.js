@@ -41,3 +41,31 @@ export const fetchAttachment = (id) => {
       })
   }
 }
+
+export const postNewAttachment = (
+  attachmentName,
+  attachmentNote,
+  attachmentAlert,
+  attachmentUpload,
+  id,
+) => {
+  return (dispatch) => {
+    dispatch(fetchAttachmentRequest())
+    axios
+      .post(URL + `attacheddocs/create`, {
+        name: attachmentName,
+        note: attachmentNote,
+        alert: attachmentAlert,
+        // attachmentUpload
+        maindocId: id,
+      })
+      .then((resp) => {
+        console.log(resp)
+        // dispatch(fetchAttachmentSuccess(resp.data.data))
+      })
+      .catch((err) => {
+        console.log(err)
+        // dispatch(fetchAttachmentFailure(err))
+      })
+  }
+}
