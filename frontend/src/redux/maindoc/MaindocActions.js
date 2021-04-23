@@ -41,3 +41,27 @@ export const fetchMaindoc = (id) => {
       })
   }
 }
+
+export const postNewMainDoc = (
+  mainDocName,
+  mainDocNote,
+  mainDocAlert,
+  mainDocUpload,
+  id,
+) => {
+  return (dispatch) => {
+    dispatch(fetchMaindocRequest())
+    axios
+      .post(URL + `maindocs/create`, {
+        name: mainDocName,
+        note: mainDocNote,
+        alert: mainDocAlert,
+        //  mainDocUpload,
+        ordnerId: id,
+      })
+      .then((resp) => {
+        console.log(resp)
+        // dispatch(fetchMaindocSuccess(resp.data.data))
+      })
+  }
+}

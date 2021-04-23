@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Form } from 'react-bootstrap'
 import {
   GoBackButton,
@@ -7,29 +7,43 @@ import {
 } from '../../components/buttons'
 import CardHeader from '../../components/card/CardHeader'
 import { connect } from 'react-redux'
-import { useParams } from 'react-router'
+import { useParams, useHistory } from 'react-router'
+import { fetchSingleOrdner, postNewMainDoc } from '../../redux'
 
-function NewMainDoc(props) {
+function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
   const [mainDocName, setMainDocName] = useState('')
   const [mainDocNote, setMainDocNote] = useState('')
   const [mainDocAlert, setMainDocAlert] = useState('')
   const [mainDocUpload, setMainDocUpload] = useState('')
 
   const { id } = useParams()
+  const history = useHistory()
+
+  useEffect(() => {
+    fetchSingleOrdner(id)
+  }, [fetchSingleOrdner, id])
 
   const submitHandler = (e) => {
     e.preventDefault()
+    postNewMainDoc(mainDocName, mainDocNote, mainDocAlert, mainDocUpload, id)
+
     setMainDocName('')
     setMainDocNote('')
     setMainDocAlert('')
     setMainDocUpload('')
+
+    history.goBack()
   }
 
   return (
     <Card className="mt-4">
       <Card.Body>
         <CardHeader
-          title={'Nieuw Hoofd Document'}
+          title={
+            ordner
+              ? `Nieuw Hoofd document ${ordner.name}`
+              : 'Nieuw Hoofd document'
+          }
           subtitle={'Maak een nieuw hoofd document aan'}
         />
         <Form className="mt-4" onSubmit={submitHandler}>
@@ -77,20 +91,40 @@ function NewMainDoc(props) {
           </div>
         </Form>
       </Card.Body>
-      {console.log(props.test)}
     </Card>
   )
 }
 
-//
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
-    test: state.ordner,
+    loading: state.ordner.loading,
+    ordner: state.ordner.ordner,
+    maindocs: state.ordner.maindocs,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    fetchSingleOrdner: (id) => dispatch(fetchSingleOrdner(id)),
+
+    postNewMainDoc: (
+      mainDocName,
+      mainDocNote,
+      mainDocAlert,
+      mainDocUpload,
+      id,
+    ) => {
+      dispatch(
+        postNewMainDoc(
+          mainDocName,
+          mainDocNote,
+          mainDocAlert,
+          mainDocUpload,
+          id,
+        ),
+      )
+    },
+  }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(NewMainDoc)

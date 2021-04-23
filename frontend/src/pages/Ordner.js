@@ -25,7 +25,7 @@ function Ordner({ fetchSingleOrdner, ordner, maindocs, loading }) {
         )}
         <h6 className="mt-2">Documenten:</h6>
         {maindocs.length < 1 && 'empty'}
-        {!loading && maindocs.length > 1 ? (
+        {!loading && maindocs.length > 0 ? (
           <Table striped bordered hover className="mt-4">
             <thead>
               <tr>
