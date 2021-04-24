@@ -7,6 +7,7 @@ import MainDoc from './pages/MainDoc'
 import Ordner from './pages/Ordner'
 import NewMainDoc from './pages/forms/NewMainDoc'
 import NewAttachment from './pages/forms/NewAttachment'
+import Upload from './components/Upload'
 
 const RouterComp = () => {
   return (
@@ -19,6 +20,7 @@ const RouterComp = () => {
         <Route exact path="/ordners/:id" component={Ordner} />
         <Route path="/attachments/create/:id" component={NewAttachment} />
         <Route exact path="/attachments/:id" component={Attachement} />
+        <Route path="/upload" component={Upload} />
       </Switch>
     </Router>
   )
