@@ -46,7 +46,7 @@ export const postNewAttachment = (
   attachmentName,
   attachmentNote,
   attachmentAlert,
-  attachmentUpload,
+  attachmentDiskFile,
   id,
 ) => {
   return (dispatch) => {
@@ -56,7 +56,7 @@ export const postNewAttachment = (
         name: attachmentName,
         note: attachmentNote,
         alert: attachmentAlert,
-        // attachmentUpload
+        diskFile: attachmentDiskFile,
         maindocId: id,
       })
       .then((resp) => {

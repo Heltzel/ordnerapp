@@ -14,7 +14,7 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
   const [mainDocName, setMainDocName] = useState('')
   const [mainDocNote, setMainDocNote] = useState('')
   const [mainDocAlert, setMainDocAlert] = useState('')
-  const [mainDocUpload, setMainDocUpload] = useState('')
+  const [mainDocDiskFile, setMainDocDiskFile] = useState('')
 
   const { id } = useParams()
   const history = useHistory()
@@ -25,12 +25,12 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    postNewMainDoc(mainDocName, mainDocNote, mainDocAlert, mainDocUpload, id)
+    postNewMainDoc(mainDocName, mainDocNote, mainDocAlert, mainDocDiskFile, id)
 
     setMainDocName('')
     setMainDocNote('')
     setMainDocAlert('')
-    setMainDocUpload('')
+    setMainDocDiskFile('')
 
     history.goBack()
   }
@@ -77,8 +77,8 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
             <Form.File
               id="exampleFormControlFile1"
               label="Selecteer een document:"
-              value={mainDocUpload}
-              onChange={(e) => setMainDocUpload(e.target.value)}
+              value={mainDocDiskFile}
+              onChange={(e) => setMainDocDiskFile(e.target.value)}
             />
           </Form.Group>
 
@@ -111,7 +111,7 @@ const mapDispatchToProps = (dispatch) => {
       mainDocName,
       mainDocNote,
       mainDocAlert,
-      mainDocUpload,
+      mainDocDiskFile,
       id,
     ) => {
       dispatch(
@@ -119,7 +119,7 @@ const mapDispatchToProps = (dispatch) => {
           mainDocName,
           mainDocNote,
           mainDocAlert,
-          mainDocUpload,
+          mainDocDiskFile,
           id,
         ),
       )

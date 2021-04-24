@@ -14,7 +14,7 @@ function NewAttachment({ fetchSingleMaindoc, postNewAttachment, maindoc }) {
   const [attachmentName, setAttachmentName] = useState('')
   const [attachmentNote, setAttachmentNote] = useState('')
   const [attachmentAlert, setAttachmentAlert] = useState('')
-  const [attachmentUpload, setAttachmentUpload] = useState('')
+  const [attachmentDiskFile, setAttachmentDiskFile] = useState('')
 
   const { id } = useParams()
   const history = useHistory()
@@ -29,13 +29,13 @@ function NewAttachment({ fetchSingleMaindoc, postNewAttachment, maindoc }) {
       attachmentName,
       attachmentNote,
       attachmentAlert,
-      attachmentUpload,
+      attachmentDiskFile,
       id,
     )
     setAttachmentName('')
     setAttachmentNote('')
     setAttachmentAlert('')
-    setAttachmentUpload('')
+    setAttachmentDiskFile('')
     history.goBack()
   }
   return (
@@ -80,8 +80,8 @@ function NewAttachment({ fetchSingleMaindoc, postNewAttachment, maindoc }) {
             <Form.File
               id="exampleFormControlFile1"
               label="Selecteer een document:"
-              value={attachmentUpload}
-              onChange={(e) => setAttachmentUpload(e.target.value)}
+              value={attachmentDiskFile}
+              onChange={(e) => setAttachmentDiskFile(e.target.value)}
             />
           </Form.Group>
 
@@ -114,7 +114,7 @@ const mapDispatchToProps = (dispatch) => {
       attachmentName,
       attachmentNote,
       attachmentAlert,
-      attachmentUpload,
+      attachmentDiskFile,
       id,
     ) => {
       dispatch(
@@ -122,7 +122,7 @@ const mapDispatchToProps = (dispatch) => {
           attachmentName,
           attachmentNote,
           attachmentAlert,
-          attachmentUpload,
+          attachmentDiskFile,
           id,
         ),
       )

@@ -46,7 +46,7 @@ export const postNewMainDoc = (
   mainDocName,
   mainDocNote,
   mainDocAlert,
-  mainDocUpload,
+  mainDocDiskFile,
   id,
 ) => {
   return (dispatch) => {
@@ -56,7 +56,7 @@ export const postNewMainDoc = (
         name: mainDocName,
         note: mainDocNote,
         alert: mainDocAlert,
-        //  mainDocUpload,
+        diskFile: mainDocDiskFile,
         ordnerId: id,
       })
       .then((resp) => {
