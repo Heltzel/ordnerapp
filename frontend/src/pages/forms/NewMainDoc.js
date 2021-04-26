@@ -9,12 +9,14 @@ import CardHeader from '../../components/card/CardHeader'
 import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router'
 import { fetchSingleOrdner, postNewMainDoc } from '../../redux'
+import axios from 'axios'
 
 function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
   const [mainDocName, setMainDocName] = useState('')
   const [mainDocNote, setMainDocNote] = useState('')
   const [mainDocAlert, setMainDocAlert] = useState('')
   const [mainDocDiskFile, setMainDocDiskFile] = useState('')
+  const [file, setFile] = useState('')
 
   const { id } = useParams()
   const history = useHistory()
@@ -25,14 +27,25 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    postNewMainDoc(mainDocName, mainDocNote, mainDocAlert, mainDocDiskFile, id)
-
+    let formdata = new FormData()
+    formdata.append('my_file', mainDocDiskFile)
+    // postNewMainDoc(mainDocName, mainDocNote, mainDocAlert, mainDocDiskFile, id)
+    console.log(mainDocDiskFile)
     setMainDocName('')
     setMainDocNote('')
     setMainDocAlert('')
     setMainDocDiskFile('')
 
     history.goBack()
+  }
+  const uploadPdf = () => {
+    let formdata = new FormData()
+    formdata.append('my_file', file)
+    axios
+      .post(URL + 'uploads/create', formdata, {
+        'Content-Type': 'multipart/form-data',
+      })
+      .then((res) => console.log(res.data))
   }
 
   return (
@@ -77,8 +90,8 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
             <Form.File
               id="exampleFormControlFile1"
               label="Selecteer een document:"
-              value={mainDocDiskFile}
-              onChange={(e) => setMainDocDiskFile(e.target.value)}
+              // value={mainDocDiskFile}
+              onChange={(e) => setFile(e.target.files[0])}
             />
           </Form.Group>
 

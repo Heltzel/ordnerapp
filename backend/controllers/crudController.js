@@ -18,7 +18,7 @@ const show = (req, res) => {
   showService(req, res, parentModel, childModel, grandchildModel)
 }
 
-const create = (req, res) => {
+const create = (req, res, next) => {
   const { parentModel } = getModels(req.path)
   reqTransformer(req, body)
   createService(req, res, parentModel)

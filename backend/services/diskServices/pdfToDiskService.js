@@ -1,21 +1,28 @@
 const multer = require('multer')
-
+let newName = ''
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'disk/')
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname)
+    cb(null, (newName = Date.now() + '-' + file.originalname))
   },
 })
 const upload = multer({ storage })
 
+// module.exports = pdfToDiskService = (req, res, next) => {
+//   let middleware = upload.single('my_file')
+//   let controller = (req, res) => {}
+//   middleware(req, res, controller)
+
+//   return res.json({ path: '' })
+// }
 module.exports = pdfToDiskService = (req, res, next) => {
-  let middleware = upload.single('my_file')
-  let controller = () => {
+  upload.single('my_file')(req, res, () => {
+    // Remember, the middleware will call it's next function
+    // so we can inject our controller manually as the next()
+
     console.log(req.file)
-    // res.send('ok')
-  }
-  middleware(req, res, controller)
-  return res.json('hello from uploadFormController create')
+    res.json({ filePath: req.file.path })
+  })
 }
