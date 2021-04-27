@@ -7,48 +7,56 @@ import {
 } from '../../components/buttons'
 import CardHeader from '../../components/card/CardHeader'
 import { connect } from 'react-redux'
-import { useParams, useHistory } from 'react-router'
 import { fetchSingleOrdner, postNewMainDoc } from '../../redux'
+import { useParams, useHistory } from 'react-router'
 import { UploadPdfService } from '../../services'
+import { BlankAlert, ErrorAlert } from '../../components/alerts'
 
 function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
   const [mainDocName, setMainDocName] = useState('')
   const [mainDocNote, setMainDocNote] = useState('')
   const [mainDocAlert, setMainDocAlert] = useState('')
-  const [mainDocDiskFile, setMainDocDiskFile] = useState('')
+  // const [mainDocDiskFile, setMainDocDiskFile] = useState('')
+  let mainDocDiskFile = ''
   const [file, setFile] = useState('')
+
+  const [error, setError] = useState('')
 
   const { id } = useParams()
   const history = useHistory()
 
   useEffect(() => {
     fetchSingleOrdner(id)
+    // TODO: cleanup
   }, [fetchSingleOrdner, id])
 
   const submitHandler = (e) => {
     e.preventDefault()
-    UploadPdfService(file).then((resp) => console.log(resp))
+    UploadPdfService(file).then((resp) => {
+      if (resp.success) {
+        console.log(resp.success.filePath)
+        mainDocDiskFile = resp.success.filePath
+        console.log(mainDocDiskFile)
+        postNewMainDoc(
+          mainDocName,
+          mainDocNote,
+          mainDocAlert,
+          mainDocDiskFile,
+          id,
+        )
+      } else if (resp.error) {
+        setError(resp.error)
+      }
+    })
 
-    // let formdata = new FormData()
-    // formdata.append('my_file', mainDocDiskFile)
-    // postNewMainDoc(mainDocName, mainDocNote, mainDocAlert, mainDocDiskFile, id)
     console.log(mainDocDiskFile)
     setMainDocName('')
     setMainDocNote('')
     setMainDocAlert('')
-    setMainDocDiskFile('')
+    mainDocDiskFile = ''
 
     history.goBack()
   }
-  // const uploadPdf = () => {
-  //   let formdata = new FormData()
-  //   formdata.append('my_file', file)
-  //   axios
-  //     .post(URL + 'uploads/create', formdata, {
-  //       'Content-Type': 'multipart/form-data',
-  //     })
-  //     .then((res) => console.log(res.data))
-  // }
 
   return (
     <Card className="mt-4">
@@ -61,6 +69,7 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
           }
           subtitle={'Maak een nieuw hoofd document aan'}
         />
+        {error ? <ErrorAlert msg={error} /> : <BlankAlert />}
         <Form className="mt-4" onSubmit={submitHandler}>
           <Form.Group>
             <Form.Label className="pl-2"> Document Naam:</Form.Label>
@@ -92,7 +101,6 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
             <Form.File
               id="exampleFormControlFile1"
               label="Selecteer een document:"
-              // value={mainDocDiskFile}
               onChange={(e) => setFile(e.target.files[0])}
             />
           </Form.Group>

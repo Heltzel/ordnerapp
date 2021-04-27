@@ -49,6 +49,7 @@ export const postNewMainDoc = (
   mainDocDiskFile,
   id,
 ) => {
+  console.log(mainDocDiskFile)
   return (dispatch) => {
     dispatch(fetchMaindocRequest())
     axios
