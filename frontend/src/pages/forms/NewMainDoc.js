@@ -9,7 +9,7 @@ import CardHeader from '../../components/card/CardHeader'
 import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router'
 import { fetchSingleOrdner, postNewMainDoc } from '../../redux'
-import axios from 'axios'
+import { UploadPdfService } from '../../services'
 
 function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
   const [mainDocName, setMainDocName] = useState('')
@@ -27,8 +27,10 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    let formdata = new FormData()
-    formdata.append('my_file', mainDocDiskFile)
+    UploadPdfService(file).then((resp) => console.log(resp))
+
+    // let formdata = new FormData()
+    // formdata.append('my_file', mainDocDiskFile)
     // postNewMainDoc(mainDocName, mainDocNote, mainDocAlert, mainDocDiskFile, id)
     console.log(mainDocDiskFile)
     setMainDocName('')
@@ -38,15 +40,15 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
 
     history.goBack()
   }
-  const uploadPdf = () => {
-    let formdata = new FormData()
-    formdata.append('my_file', file)
-    axios
-      .post(URL + 'uploads/create', formdata, {
-        'Content-Type': 'multipart/form-data',
-      })
-      .then((res) => console.log(res.data))
-  }
+  // const uploadPdf = () => {
+  //   let formdata = new FormData()
+  //   formdata.append('my_file', file)
+  //   axios
+  //     .post(URL + 'uploads/create', formdata, {
+  //       'Content-Type': 'multipart/form-data',
+  //     })
+  //     .then((res) => console.log(res.data))
+  // }
 
   return (
     <Card className="mt-4">

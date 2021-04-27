@@ -1,29 +1,18 @@
 import { useState } from 'react'
 import { Card } from 'react-bootstrap'
-import axios from 'axios'
+import { UploadPdfService } from '../services'
 
 function Upload() {
-  const URL = 'http://localhost:5000/'
   const [file, setFile] = useState('')
-
-  const handleOnchange = (e) => {
-    setFile(e.target.files[0])
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    let formdata = new FormData()
-    formdata.append('my_file', file)
-    axios
-      .post(URL + 'uploads/create', formdata, {
-        'Content-Type': 'multipart/form-data',
-      })
-      .then((res) => console.log(res.data))
+    UploadPdfService(file).then((resp) => console.log(resp))
   }
 
   return (
     <Card className="m-4 p-5">
-      <input type="file" name="" id="" onChange={handleOnchange} />
+      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
       <button onClick={handleSubmit}>Upload</button>
     </Card>
   )
