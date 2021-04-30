@@ -43,6 +43,7 @@ function MainDoc({ fetchSingleMaindoc, maindoc, attachments, loading }) {
             />
           </Alert>
         )}
+
         <h6>Attachments:</h6>
         {attachments.length > 0 ? (
           <Table striped bordered hover>

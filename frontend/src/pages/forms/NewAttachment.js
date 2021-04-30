@@ -9,12 +9,18 @@ import {
 import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router'
 import { fetchSingleMaindoc, postNewAttachment } from '../../redux'
+import { UploadPdfService } from '../../services'
+import { BlankAlert, ErrorAlert } from '../../components/alerts'
 
 function NewAttachment({ fetchSingleMaindoc, postNewAttachment, maindoc }) {
   const [attachmentName, setAttachmentName] = useState('')
   const [attachmentNote, setAttachmentNote] = useState('')
   const [attachmentAlert, setAttachmentAlert] = useState('')
-  const [attachmentDiskFile, setAttachmentDiskFile] = useState('')
+  // const [attachmentDiskFile, setAttachmentDiskFile] = useState('')
+  let attachmentDiskFile = ''
+
+  const [file, setFile] = useState('')
+  const [error, setError] = useState('')
 
   const { id } = useParams()
   const history = useHistory()
@@ -25,17 +31,26 @@ function NewAttachment({ fetchSingleMaindoc, postNewAttachment, maindoc }) {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    postNewAttachment(
-      attachmentName,
-      attachmentNote,
-      attachmentAlert,
-      attachmentDiskFile,
-      id,
-    )
+    UploadPdfService(file).then((resp) => {
+      if (resp.success) {
+        attachmentDiskFile = resp.success.filePath
+        postNewAttachment(
+          attachmentName,
+          attachmentNote,
+          attachmentAlert,
+          attachmentDiskFile,
+          id,
+        )
+      } else if (resp.error) {
+        setError(resp.error)
+      }
+    })
+
     setAttachmentName('')
     setAttachmentNote('')
     setAttachmentAlert('')
-    setAttachmentDiskFile('')
+    attachmentDiskFile = ''
+
     history.goBack()
   }
   return (
@@ -47,7 +62,7 @@ function NewAttachment({ fetchSingleMaindoc, postNewAttachment, maindoc }) {
           }
           subtitle={'Maak een nieuw attachment aan'}
         />
-
+        {error ? <ErrorAlert msg={error} /> : <BlankAlert />}
         <Form className="mt-4" onSubmit={submitHandler}>
           <Form.Group>
             <Form.Label className="pl-2">Attachment Naam:</Form.Label>
@@ -80,8 +95,7 @@ function NewAttachment({ fetchSingleMaindoc, postNewAttachment, maindoc }) {
             <Form.File
               id="exampleFormControlFile1"
               label="Selecteer een document:"
-              value={attachmentDiskFile}
-              onChange={(e) => setAttachmentDiskFile(e.target.value)}
+              onChange={(e) => setFile(e.target.files[0])}
             />
           </Form.Group>
 

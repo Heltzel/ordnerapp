@@ -18,8 +18,8 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
   const [mainDocAlert, setMainDocAlert] = useState('')
   // const [mainDocDiskFile, setMainDocDiskFile] = useState('')
   let mainDocDiskFile = ''
-  const [file, setFile] = useState('')
 
+  const [file, setFile] = useState('')
   const [error, setError] = useState('')
 
   const { id } = useParams()
@@ -27,7 +27,6 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
 
   useEffect(() => {
     fetchSingleOrdner(id)
-    // TODO: cleanup
   }, [fetchSingleOrdner, id])
 
   const submitHandler = (e) => {
@@ -36,7 +35,7 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
       if (resp.success) {
         console.log(resp.success.filePath)
         mainDocDiskFile = resp.success.filePath
-        console.log(mainDocDiskFile)
+
         postNewMainDoc(
           mainDocName,
           mainDocNote,
