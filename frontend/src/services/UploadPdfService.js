@@ -9,7 +9,6 @@ export const UploadPdfService = async (file) => {
       'Content-Type': 'multipart/form-data',
     })
     .then((res) => {
-      console.log(res.data)
       return { success: res.data }
     })
     .catch((err) => {

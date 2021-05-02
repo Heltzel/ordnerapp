@@ -117,7 +117,7 @@ function MainDoc({ fetchSingleMaindoc, maindoc, attachments, loading }) {
       </div>
       <Card.Body>
         <h6>Hoofd document:</h6>
-        <PdfViewer />
+        <PdfViewer diskFile={maindoc.diskFile} />
       </Card.Body>
     </Card>
   )

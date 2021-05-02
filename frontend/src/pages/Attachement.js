@@ -64,7 +64,6 @@ function Attachement({ fetchAttachment, attachment, loading }) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.attachment)
   return {
     loading: state.attachment.loading,
     attachment: state.attachment.attachment,

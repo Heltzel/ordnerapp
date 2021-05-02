@@ -33,7 +33,6 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
     e.preventDefault()
     UploadPdfService(file).then((resp) => {
       if (resp.success) {
-        console.log(resp.success.filePath)
         mainDocDiskFile = resp.success.filePath
 
         postNewMainDoc(
@@ -47,8 +46,6 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
         setError(resp.error)
       }
     })
-
-    console.log(mainDocDiskFile)
     setMainDocName('')
     setMainDocNote('')
     setMainDocAlert('')

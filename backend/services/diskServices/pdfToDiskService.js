@@ -12,11 +12,9 @@ const upload = multer({ storage })
 
 module.exports = pdfToDiskService = (req, res, next) => {
   upload.single('my_file')(req, res, () => {
-    console.log(req.file)
     if (req.file === undefined) {
       return res.json({ filePath: null })
     }
-    console.log(req.file.path)
     // res.json({ filePath: req.file.path })
     res.json({ filePath: req.file.filename })
   })

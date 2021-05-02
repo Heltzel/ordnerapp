@@ -11,19 +11,10 @@ app.use(express.static('./public'))
 router.post(`/${routename}/create`, uploadFormController.create)
 router.get(`/${routename}/show/`, uploadFormController.show)
 
-// router.get(`/${routename}/file/`, function (req, res) {
-//   const resolvedDiskPath = path.resolve(process.cwd(), 'public/disk')
-//   const diskFile = 'test.pdf'
-//   var diskPath = resolvedDiskPath.replace(/\\/g, '/')
-//   const filePath = `${diskPath}/${diskFile}`
-//   var data = fs.readFileSync(filePath)
-//   res.contentType('application/pdf')
-//   res.send(data)
-// })
-
-router.get(`/${routename}/file/`, function (req, res) {
+router.get(`/${routename}/file/:dfile`, function (req, res) {
+  const dfile = req.params.dfile
   const resolvedDiskPath = path.resolve(process.cwd(), 'public/disk')
-  const diskFile = '1619954442157-Nieuwsbrief april 2021.pdf'
+  const diskFile = dfile
   var diskPath = resolvedDiskPath.replace(/\\/g, '/')
   const filePath = `${diskPath}/${diskFile}`
 

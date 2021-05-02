@@ -27,8 +27,5 @@ function removeFile(file) {
     return
   }
 }
-function test() {
-  console.log(disk)
-}
 
 module.exports = { isDisk, getIndex, removeFile }

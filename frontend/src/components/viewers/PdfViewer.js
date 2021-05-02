@@ -1,37 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-function PdfViewer() {
+function PdfViewer({ diskFile }) {
   const URL = 'http://localhost:5000/'
-  const [pdf, setPdf] = useState({})
+  const [pdf, setPdf] = useState(null)
 
   // THIS ONE
   useEffect(() => {
-    axios({
-      url: URL + `uploads/file`,
-      method: 'GET',
-      responseType: 'arraybuffer', // important
-    }).then((response) => {
-      console.log(response)
-      const url = window.URL.createObjectURL(
-        new Blob([response.data], { type: 'application/pdf' }),
-      )
+    if (diskFile !== undefined) {
+      axios({
+        url: URL + `uploads/file/${diskFile}`,
+        method: 'GET',
+        responseType: 'arraybuffer', // important
+      })
+        .then((response) => {
+          const pdf = window.URL.createObjectURL(
+            new Blob([response.data], { type: 'application/pdf' }),
+          )
 
-      setPdf(url)
-      // console.log(url)
-      // const link = document.createElement('a')
-      // link.href = url
-      // link.setAttribute('download', 'file.pdf')
-      // document.body.appendChild(link)
-      // link.click()
-    })
-  }, [])
+          setPdf(pdf)
+        })
+        .catch((err) => console.log(err))
+    }
+  }, [diskFile])
 
   return (
     <div>
-      <object type="application/pdf" data={pdf} width="100%" height="1500">
-        <p>error</p>
-      </object>
+      {pdf !== null && (
+        <object type="application/pdf" data={pdf} width="100%" height="1500">
+          <p>error</p>
+        </object>
+      )}
     </div>
   )
 }

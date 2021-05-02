@@ -113,7 +113,6 @@ function NewAttachment({ fetchSingleMaindoc, postNewAttachment, maindoc }) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.maindoc.maindoc)
   return {
     maindoc: state.maindoc.maindoc,
   }
