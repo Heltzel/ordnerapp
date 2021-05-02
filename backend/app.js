@@ -11,7 +11,7 @@ const uploadFormRoutes = require('./routes/formRoutes')
 
 app.use(crudRoutes)
 app.use(uploadFormRoutes)
-app.use(express.static('./disk'))
+app.use(express.static(__dirname + '../disk'))
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`)
 })

@@ -2,7 +2,7 @@ const multer = require('multer')
 let newName = ''
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'disk/')
+    cb(null, 'public/disk/')
   },
   filename: (req, file, cb) => {
     cb(null, (newName = Date.now() + '-' + file.originalname))
@@ -17,6 +17,7 @@ module.exports = pdfToDiskService = (req, res, next) => {
       return res.json({ filePath: null })
     }
     console.log(req.file.path)
-    res.json({ filePath: req.file.path })
+    // res.json({ filePath: req.file.path })
+    res.json({ filePath: req.file.filename })
   })
 }

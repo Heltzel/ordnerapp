@@ -77,6 +77,7 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
               placeholder="v.b. Meterstanden door geven"
               value={mainDocName}
               onChange={(e) => setMainDocName(e.target.value)}
+              required
             />
           </Form.Group>
           <Form.Group>
@@ -85,6 +86,7 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
               type="text"
               value={mainDocNote}
               onChange={(e) => setMainDocNote(e.target.value)}
+              required
             />
           </Form.Group>
           <Form.Group>
@@ -101,6 +103,7 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
               id="exampleFormControlFile1"
               label="Selecteer een document:"
               onChange={(e) => setFile(e.target.files[0])}
+              required
             />
           </Form.Group>
 

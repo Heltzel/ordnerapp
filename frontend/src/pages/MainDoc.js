@@ -12,6 +12,7 @@ import {
 import { fetchSingleMaindoc } from '../redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import PdfViewer from '../components/viewers/PdfViewer'
 
 function MainDoc({ fetchSingleMaindoc, maindoc, attachments, loading }) {
   const { id } = useParams()
@@ -114,6 +115,10 @@ function MainDoc({ fetchSingleMaindoc, maindoc, attachments, loading }) {
           <HomeButton />
         </span>
       </div>
+      <Card.Body>
+        <h6>Hoofd document:</h6>
+        <PdfViewer />
+      </Card.Body>
     </Card>
   )
 }

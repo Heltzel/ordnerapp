@@ -105,5 +105,5 @@ dist
 
 # Misc
 troubleshooter.md
-disk/
+public/disk/
 database/ordners_db.sqlite
