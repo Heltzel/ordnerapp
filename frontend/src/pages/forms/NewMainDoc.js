@@ -42,6 +42,7 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
           mainDocDiskFile,
           id,
         )
+        history.push(`/ordners/${id}`)
       } else if (resp.error) {
         setError(resp.error)
       }
@@ -50,7 +51,7 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
     setMainDocNote('')
     setMainDocAlert('')
     mainDocDiskFile = ''
-
+    history.push(`/ordners/${id}`)
     history.goBack()
   }
 

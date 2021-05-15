@@ -107,7 +107,7 @@ function MainDoc({ fetchSingleMaindoc, maindoc, attachments, loading }) {
           <CreateNewButton
             route={`/attachments/create/${id}`}
             type={'button'}
-            title={'Nieuw Attachement'}
+            title={'Attachement Toevoegen'}
           />
         </span>
         <span>
