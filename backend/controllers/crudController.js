@@ -31,6 +31,7 @@ const update = (req, res) => {
 }
 
 const destroy = (req, res) => {
+  debugger
   const { parentModel } = getModels(req.path)
   destroyService(req, res, parentModel)
 }

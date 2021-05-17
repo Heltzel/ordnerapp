@@ -5,19 +5,27 @@ import CardHeader from '../components/card/CardHeader'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import {
   CreateNewButton,
+  DeleteDocButton,
   GoBackButton,
   HomeButton,
   InfoButton,
 } from '../components/buttons'
-import { fetchSingleMaindoc } from '../redux'
+import { fetchSingleMaindoc, removeSingleMainDoc } from '../redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import PdfViewer from '../components/viewers/PdfViewer'
+import { RemovePdfService } from '../services/RemovePdfService'
 
-function MainDoc({ fetchSingleMaindoc, maindoc, attachments, loading }) {
+function MainDoc({
+  fetchSingleMaindoc,
+  removeSingleMainDoc,
+  maindoc,
+  attachments,
+  loading,
+}) {
   const { id } = useParams()
   const [showInfo, setShowInfo] = useState(false)
-
+  console.log(maindoc)
   useEffect(() => {
     fetchSingleMaindoc(id)
   }, [fetchSingleMaindoc, id])
@@ -25,6 +33,17 @@ function MainDoc({ fetchSingleMaindoc, maindoc, attachments, loading }) {
   const removeAlertHandler = (e) => {
     e.preventDefault()
   }
+
+  const removeDocHandler = (e) => {
+    e.preventDefault()
+    RemovePdfService(maindoc.diskFile).then((resp) => {
+      if (resp.data.msg !== 'err') {
+        removeSingleMainDoc(id)
+      }
+    })
+    window.location.href = `/ordners/${maindoc.ordnerId}`
+  }
+
   return (
     <Card className="mt-4 ">
       <Card.Body>
@@ -101,15 +120,22 @@ function MainDoc({ fetchSingleMaindoc, maindoc, attachments, loading }) {
           'Geen attachments'
         )}
       </Card.Body>
-      <div className="action-group d-flex justify-content-between mx-3 my-4">
-        <span>
-          <GoBackButton />
-          <CreateNewButton
-            route={`/attachments/create/${id}`}
-            type={'button'}
-            title={'Attachement Toevoegen'}
-          />
-        </span>
+      <div className="action-group d-flex justify-content-between mx-3 my-4 row">
+        <div>
+          <span className="pl-2">
+            <GoBackButton />
+          </span>
+          <span className="pr-1">
+            <CreateNewButton
+              route={`/attachments/create/${id}`}
+              type={'button'}
+              title={'Attachement Toevoegen'}
+            />
+          </span>
+          <span className="pr-1" onClick={(e) => removeDocHandler(e)}>
+            <DeleteDocButton />
+          </span>
+        </div>
         <span>
           <InfoButton showInfo={showInfo} setShowInfo={setShowInfo} />
           <HomeButton />
@@ -135,6 +161,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchSingleMaindoc: (id) => {
       dispatch(fetchSingleMaindoc(id))
+    },
+    // file path
+    removeSingleMainDoc: (id) => {
+      dispatch(removeSingleMainDoc(id))
     },
   }
 }

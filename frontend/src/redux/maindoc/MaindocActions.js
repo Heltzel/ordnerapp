@@ -69,3 +69,20 @@ export const postNewMainDoc = (
       })
   }
 }
+
+export const removeSingleMainDoc = (id) => {
+  return (dispatch) => {
+    console.log('remove')
+
+    axios
+      .delete(URL + `maindocs/${id}/destroy`)
+      .then((resp) => {
+        console.log(resp)
+        // dispatch(fetchMaindocSuccess(resp.data.data))
+      })
+      .catch((err) => {
+        console.log(err)
+        // dispatch(fetchMaindocFailure(err))
+      })
+  }
+}

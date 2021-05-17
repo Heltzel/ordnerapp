@@ -15,6 +15,7 @@ function Ordner({ fetchSingleOrdner, ordner, maindocs, loading }) {
 
   useEffect(() => {
     fetchSingleOrdner(id)
+    console.log('effect')
   }, [fetchSingleOrdner, id])
 
   return (

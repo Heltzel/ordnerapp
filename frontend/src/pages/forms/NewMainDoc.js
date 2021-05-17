@@ -8,7 +8,7 @@ import {
 import CardHeader from '../../components/card/CardHeader'
 import { connect } from 'react-redux'
 import { fetchSingleOrdner, postNewMainDoc } from '../../redux'
-import { useParams, useHistory } from 'react-router'
+import { useParams, useHistory, Redirect } from 'react-router'
 import { UploadPdfService } from '../../services'
 import { BlankAlert, ErrorAlert } from '../../components/alerts'
 
@@ -16,7 +16,6 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
   const [mainDocName, setMainDocName] = useState('')
   const [mainDocNote, setMainDocNote] = useState('')
   const [mainDocAlert, setMainDocAlert] = useState('')
-  // const [mainDocDiskFile, setMainDocDiskFile] = useState('')
   let mainDocDiskFile = ''
 
   const [file, setFile] = useState('')
@@ -51,8 +50,7 @@ function NewMainDoc({ fetchSingleOrdner, postNewMainDoc, ordner }) {
     setMainDocNote('')
     setMainDocAlert('')
     mainDocDiskFile = ''
-    history.push(`/ordners/${id}`)
-    history.goBack()
+    return <Redirect to={`/ordners/${id}`} />
   }
 
   return (
